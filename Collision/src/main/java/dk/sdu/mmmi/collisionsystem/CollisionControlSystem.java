@@ -31,6 +31,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
                     if(entity1.getHitPoints()<1){
                         world.removeEntity(entity1);
                     }
+
                     if(entity.getHitPoints()<1){
                         world.removeEntity(entity);
                     }

@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.asteroidsystem;
+package dk.sdu.mmmi.cbse;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -19,7 +19,7 @@ public class AsteroidPlugin implements IGamePluginService {
 
     private Entity createAsteroid(GameData gameData) {
 
-        Entity asteroid1 = new Asteroid();
+        Entity asteroid1 = new HelloWorld();
         asteroid1.setPolygonCoordinates(20, 0, 14, 14, 0, 20, -14, 14, -20, 0, -14, -14, 0, -20, 14, -14);
         asteroid1.setX(gameData.getDisplayWidth()/2);
         asteroid1.setY(0);
@@ -33,7 +33,7 @@ public class AsteroidPlugin implements IGamePluginService {
     @Override
     public void stop(GameData gameData, World world) {
         for (Entity e : world.getEntities()) {
-            if (e.getClass() == Asteroid.class) {
+            if (e.getClass() == HelloWorld.class) {
                 world.removeEntity(e);
             }
         }

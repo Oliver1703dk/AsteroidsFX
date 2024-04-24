@@ -1,10 +1,10 @@
-package dk.sdu.mmmi.asteroidsystem;
+package dk.sdu.mmmi.cbse;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 
 import java.util.Random;
 
-public class Asteroid extends Entity {
+public class HelloWorld extends Entity {
 
 
 
@@ -13,7 +13,7 @@ public class Asteroid extends Entity {
         Random randomNum = new Random();
 
 
-        Entity asteroid1 = new Asteroid();
+        Entity asteroid1 = new HelloWorld();
         asteroid1.setX(entity.getX());
         asteroid1.setY(entity.getY());
         asteroid1.setRotation(entity.getRotation()+randomNum.nextInt(360));

@@ -1,4 +1,4 @@
-/Users/OliverLarsen/Desktop/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/module-info.java
-/Users/OliverLarsen/Desktop/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/cbse/EnemyPlugin.java
-/Users/OliverLarsen/Desktop/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/cbse/Enemy.java
-/Users/OliverLarsen/Desktop/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/cbse/EnemyControlSystem.java
+/Users/OliverLarsen/Desktop/SDU/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/module-info.java
+/Users/OliverLarsen/Desktop/SDU/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/enemysystem/EnemyControlSystem.java
+/Users/OliverLarsen/Desktop/SDU/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/enemysystem/Enemy.java
+/Users/OliverLarsen/Desktop/SDU/4semester/Komponentbaseret/AsteroidsFX/Enemy/src/main/java/dk/sdu/mmmi/enemysystem/EnemyPlugin.java
