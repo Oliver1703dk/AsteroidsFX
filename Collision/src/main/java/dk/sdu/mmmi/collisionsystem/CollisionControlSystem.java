@@ -6,12 +6,15 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
+import java.net.http.HttpClient;
 import java.util.Arrays;
 import java.util.OptionalDouble;
 
 import static java.lang.Math.sqrt;
 
 public class CollisionControlSystem implements IEntityProcessingService {
+
+
     @Override
     public void process(GameData gameData, World world) {
 

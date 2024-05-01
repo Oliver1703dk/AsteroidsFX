@@ -2,6 +2,7 @@ package dk.sdu.mmmi.cbse.common.data;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class Entity implements Serializable {
@@ -13,6 +14,7 @@ public class Entity implements Serializable {
     private double y;
     private double rotation;
     private int hitPoints;
+    private List<String> labels;
 
     private int dmg;
 

@@ -5,10 +5,17 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Collection;
 import java.util.Random;
 
 public class AsteroidControlSystem implements IEntityProcessingService {
+
+    HttpClient client = HttpClient.newHttpClient();
 
 
     @Override
@@ -31,6 +38,25 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                 createMediumAsteroid(asteroid, world, 90);
                 world.removeEntity(asteroid);
 
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:8080/score?point=1"))
+                        .build();
+
+
+                HttpResponse<String> response =
+                        null;
+                try {
+                    response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                    gameData.getLabels().clear();
+                    gameData.addLabel("Score: " + response.body());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                System.out.println(response.body());
             }
 
             if(asteroid.getHitPoints()==3){
