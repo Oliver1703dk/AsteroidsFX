@@ -1,9 +1,13 @@
 package dk.sdu.mmmi.cbse.common.data;
 
+import dk.sdu.mmmi.cbse.common.data.entityParts.EntityPart;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Entity implements Serializable {
 
@@ -18,7 +22,27 @@ public class Entity implements Serializable {
 
     private int dmg;
 
-            
+    private Map<Class, EntityPart> parts;
+
+
+
+    public void add(EntityPart part) {
+        parts.put(part.getClass(), part);
+    }
+
+    public void remove(Class partClass) {
+        parts.remove(partClass);
+    }
+
+    public <E extends EntityPart> E getPart(Class partClass) {
+        return (E) parts.get(partClass);
+    }
+
+
+    public Entity() {
+        parts = new ConcurrentHashMap<>();
+    }
+
 
     public String getID() {
         return ID.toString();

@@ -3,6 +3,7 @@ package dk.sdu.mmmi.asteroidsystem;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityParts.LifePart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 import java.io.IOException;
@@ -30,9 +31,10 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             double changeY = Math.sin(Math.toRadians(asteroid.getRotation()));
             asteroid.setX(asteroid.getX() + changeX * 0.5);
             asteroid.setY(asteroid.getY() + changeY * 0.5);
+            LifePart lifePart = (LifePart) asteroid.getPart(LifePart.class);
 
 
-            if(asteroid.getHitPoints()==7){
+            if(lifePart.getLife()==7){
 
                 createMediumAsteroid(asteroid, world, -90);
                 createMediumAsteroid(asteroid, world, 90);
@@ -59,7 +61,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                 System.out.println(response.body());
             }
 
-            if(asteroid.getHitPoints()==3){
+            if(lifePart.getLife()==3){
 
                 createSmallAsteroid(asteroid, world, -90);
                 createSmallAsteroid(asteroid, world, 90);
@@ -92,8 +94,9 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             asteroid1.setX(randomInt);
             asteroid1.setY(0);
             asteroid1.setRotation(90);
-            asteroid1.setHitPoints(10);
-            asteroid1.setDmg(10);
+            asteroid1.add(new LifePart(10, 10));
+//            asteroid1.setHitPoints(10);
+//            asteroid1.setDmg(10);
 
         world.addEntity(asteroid1);
     }
@@ -105,8 +108,10 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         asteroid1.setX(asteroid.getX());
         asteroid1.setY(asteroid.getY());
         asteroid1.setRotation(asteroid.getRotation()+rotation);
-        asteroid1.setHitPoints(6);
-        asteroid1.setDmg(10);
+        asteroid1.add(new LifePart(6, 10));
+
+//        asteroid1.setHitPoints(6);
+//        asteroid1.setDmg(10);
         world.addEntity(asteroid1);
     }
 
@@ -116,8 +121,9 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         asteroid1.setX(asteroid.getX());
         asteroid1.setY(asteroid.getY());
         asteroid1.setRotation(asteroid.getRotation()+rotation);
-        asteroid1.setHitPoints(2);
-        asteroid1.setDmg(10);
+        asteroid1.add(new LifePart(2, 10));
+//        asteroid1.setHitPoints(2);
+//        asteroid1.setDmg(10);
         world.addEntity(asteroid1);
     }
 
