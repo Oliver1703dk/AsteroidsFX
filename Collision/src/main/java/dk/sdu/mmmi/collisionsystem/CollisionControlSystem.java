@@ -5,13 +5,14 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 import java.util.Arrays;
 import java.util.OptionalDouble;
 
 import static java.lang.Math.sqrt;
 
-public class CollisionControlSystem implements IEntityProcessingService {
+public class CollisionControlSystem implements IPostEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
 
