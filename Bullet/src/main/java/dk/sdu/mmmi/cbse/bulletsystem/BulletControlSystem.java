@@ -35,6 +35,11 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             if (bullet.getY() > gameData.getDisplayHeight()) {
                 world.removeEntity(bullet);
             }
+            LifePart lifePart = (LifePart) bullet.getPart(LifePart.class);
+            if(lifePart.getLife()<=0){
+                world.removeEntity(bullet);
+            }
+            lifePart.process(gameData, bullet);
 
 
 
@@ -50,8 +55,6 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         bullet.setY(shooter.getY());
         bullet.add(new LifePart(1, 1));
 
-//        bullet.setHitPoints(1);
-//        bullet.setDmg(1);
         bullet.setRotation(shooter.getRotation());
         double changeX = Math.cos(Math.toRadians(bullet.getRotation()));
         double changeY = Math.sin(Math.toRadians(bullet.getRotation()));

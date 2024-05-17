@@ -21,14 +21,12 @@ public class AsteroidPlugin implements IGamePluginService {
     private Entity createAsteroid(GameData gameData) {
 
         Entity asteroid1 = new Asteroid();
-        asteroid1.setPolygonCoordinates(20, 0, 14, 14, 0, 20, -14, 14, -20, 0, -14, -14, 0, -20, 14, -14);
+        asteroid1.setPolygonCoordinates(20, 0, 14, 14, 0, 20,
+                -14, 14, -20, 0, -14, -14, 0, -20, 14, -14);
         asteroid1.setX(gameData.getDisplayWidth()/2);
         asteroid1.setY(0);
         asteroid1.setRotation(90);
         asteroid1.add(new LifePart(10, 10));
-
-//        asteroid1.setHitPoints(10);
-//        asteroid1.setDmg(10);
 
         return asteroid1;
     }

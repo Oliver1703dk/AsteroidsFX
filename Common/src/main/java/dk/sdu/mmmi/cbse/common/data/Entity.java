@@ -17,14 +17,11 @@ public class Entity implements Serializable {
     private double x;
     private double y;
     private double rotation;
-    private int hitPoints;
     private List<String> labels;
 
-    private int dmg;
+
 
     private Map<Class, EntityPart> parts;
-
-
 
     public void add(EntityPart part) {
         parts.put(part.getClass(), part);
@@ -38,10 +35,10 @@ public class Entity implements Serializable {
         return (E) parts.get(partClass);
     }
 
-
     public Entity() {
         parts = new ConcurrentHashMap<>();
     }
+
 
 
     public String getID() {
@@ -87,27 +84,6 @@ public class Entity implements Serializable {
     public double getRotation() {
         return rotation;
     }
-
-
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
-    }
-
-
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-
-    public void setDmg(int dmg) {
-        this.dmg = dmg;
-    }
-
-
-    public int getDmg() {
-        return dmg;
-    }
-
 
 
         
