@@ -5,6 +5,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityParts.LifePart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 import java.util.Collection;
@@ -31,10 +32,10 @@ public class EnemyControlSystem implements IEntityProcessingService {
             randomInt = random.nextInt(2);
             randomInt2 = random.nextInt(10);
 
-            if (randomInt==0) {
+            if (randomInt == 0) {
                 enemy.setRotation(enemy.getRotation() - 5);
             }
-            if (randomInt==1) {
+            if (randomInt == 1) {
                 enemy.setRotation(enemy.getRotation() + 5);
             }
             if (true) {
@@ -43,37 +44,46 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setX(enemy.getX() + changeX);
                 enemy.setY(enemy.getY() + changeY);
             }
-            if(randomInt2==1) {
+            if (randomInt2 == 1) {
                 getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
+                        spi -> {
+                            world.addEntity(spi.createBullet(enemy, gameData));
+                        }
                 );
 
             }
-            
-        if (enemy.getX() < 0) {
-            enemy.setX(1);
-            enemy.setRotation(enemy.getRotation()+180);
 
-        }
+            if (enemy.getX() < 0) {
+                enemy.setX(1);
+                enemy.setRotation(enemy.getRotation() + 180);
 
-        if (enemy.getX() > gameData.getDisplayWidth()) {
-            enemy.setX(gameData.getDisplayWidth()-1);
-            enemy.setRotation(enemy.getRotation()+180);
+            }
 
-        }
+            if (enemy.getX() > gameData.getDisplayWidth()) {
+                enemy.setX(gameData.getDisplayWidth() - 1);
+                enemy.setRotation(enemy.getRotation() + 180);
 
-        if (enemy.getY() < 0) {
-            enemy.setY(1);
-            enemy.setRotation(enemy.getRotation()+180);
+            }
 
-        }
+            if (enemy.getY() < 0) {
+                enemy.setY(1);
+                enemy.setRotation(enemy.getRotation() + 180);
 
-        if (enemy.getY() > gameData.getDisplayHeight()) {
-            enemy.setY(gameData.getDisplayHeight()-1);
-            enemy.setRotation(enemy.getRotation()+180);
-        }
+            }
 
-                                        
+            if (enemy.getY() > gameData.getDisplayHeight()) {
+                enemy.setY(gameData.getDisplayHeight() - 1);
+                enemy.setRotation(enemy.getRotation() + 180);
+            }
+
+
+            LifePart lifePart = enemy.getPart(LifePart.class);
+
+            if(lifePart.getLife() <= 0){
+                world.removeEntity(enemy);
+            }
+
+            lifePart.process(gameData, enemy);
         }
     }
 
@@ -81,3 +91,4 @@ public class EnemyControlSystem implements IEntityProcessingService {
         return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }
+
