@@ -4,7 +4,6 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 module Asteroid {
-    exports dk.sdu.mmmi.asteroidsystem;
     requires Common;
     requires java.net.http;
     provides IGamePluginService with AsteroidPlugin;
